@@ -1,3 +1,12 @@
 ---
 Name: quizmaster
 ---
+DNADesign\QuizMaster\Quiz:
+  allowed_step_classes:
+    question: DNADesign\QuizMaster\QuizQuestionStep
+    content: DNADesign\QuizMaster\QuizContentStep
+
+DNADesign\QuizMaster\QuizQuestionStep:
+  allowed_answers_classes:
+    multichoice: DNADesign\QuizMaster\QuizMultiChoiceAnswer
+    
