@@ -4,7 +4,9 @@ namespace DNADesign\QuizMaster\Models;
 
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\ORM\DataObject;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
@@ -26,6 +28,12 @@ class Quiz extends DataObject
         'Steps' => QuizStep::class
     ];
 
+    private static $summary_fields = [
+        'ID' => 'ID',
+        'TItle' => 'Title',
+        'Steps.Count' => '# steps'
+    ];
+
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
@@ -43,6 +51,13 @@ class Quiz extends DataObject
                         
                         $config->removeComponentsByType(GridFieldAddNewButton::class);
                         $config->addComponent($addNew);
+
+                        $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+
+                        $delete = $config->getComponentByType(GridFieldDeleteAction::class);
+                        if ($delete) {
+                            $delete->setRemoveRelation(false); // delete instead of unlink
+                        }
                     }
                     // Allow to re-order
                     $config->addComponent(new GridFieldOrderableRows('Sort'));
