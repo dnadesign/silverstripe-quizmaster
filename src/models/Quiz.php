@@ -2,6 +2,7 @@
 
 namespace DNADesign\QuizMaster\Models;
 
+use DNADesign\QuizMaster\Interfaces\QuizQuestion;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
@@ -10,7 +11,6 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\ORM\DataObject;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class Quiz extends DataObject
 {
@@ -92,5 +92,31 @@ class Quiz extends DataObject
         }
             
         return $classes;
+    }
+
+    /**
+     * Compute the number of a question step
+     * assuming that we exclude any step that is not a question
+     *
+     * @return int
+     */
+    public function getQuestionNumberForStep($id)
+    {
+        $questions = $this->getQuestions()->column('ID');
+        $index = array_search($id, $questions);
+        
+        return $index !== false ? $index + 1 : 0;
+    }
+
+    /**
+     * Return all steps that extends QuizQuestion
+     *
+     * @return DataList
+     */
+    public function getQuestions()
+    {
+        return $this->Steps()->filterByCallback(function ($item) {
+            return $item instanceof QuizQuestion;
+        });
     }
 }

@@ -28,7 +28,7 @@ class QuizStep extends DataObject
 
     private static $summary_fields = [
         'ID' => 'ID',
-        'getType' => 'Type',
+        'getStepType' => 'Type',
         'Name' => 'Name'
     ];
 
@@ -55,8 +55,13 @@ class QuizStep extends DataObject
     /**
      * For gridField summary
      */
-    public function getType()
+    public function getStepType()
     {
         return DBField::create_field(DBText::class, $this->i18n_singular_name());
+    }
+
+    public function forTemplate()
+    {
+        return $this->renderWith(static::class);
     }
 }
