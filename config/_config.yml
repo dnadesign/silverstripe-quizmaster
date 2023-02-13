@@ -1,9 +1,0 @@
----
-Name: quizmaster
----
-DNADesign\QuizMaster\Quiz:
-  allowed_step_classes:
-    multichoice: DNADesign\QuizMaster\QuizMultiChoiceQuestionStep
-    content: DNADesign\QuizMaster\QuizContentStep
-    
-    

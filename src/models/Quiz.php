@@ -3,6 +3,7 @@
 namespace DNADesign\QuizMaster\Models;
 
 use DNADesign\QuizMaster\Interfaces\QuizQuestion;
+use SilverStripe\Control\Controller;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
@@ -118,5 +119,57 @@ class Quiz extends DataObject
         return $this->Steps()->filterByCallback(function ($item) {
             return $item instanceof QuizQuestion;
         });
+    }
+
+    /**
+     * Generate the link to the submit action
+     *
+     * @return string
+     */
+    public function getFormAction()
+    {
+        return Controller::join_links(Controller::curr()->Link('submitquiz'), $this->ID);
+    }
+
+    /**
+     * Find all the questions that define UseValueAsScore
+     * and calculate the sum of their submitted values
+     *
+     * @return int|false
+     */
+    public function computeScore($data)
+    {
+        // Find score-able questions
+        $questions = $this->getQuestions()->filterByCallback(function ($item) {
+            return $item->hasField('UseValueAsScore') && (boolean) $item->UseValueAsScore === true;
+        });
+
+        if ($questions->count() === 0) {
+            return false;
+        }
+
+        // Find questions that have been submitted
+        $scoreData = [];
+        $fieldNames = $questions->column('FieldName');
+
+        foreach ($data as $fieldName => $value) {
+            if (!in_array($fieldName, $fieldNames)) {
+                continue;
+            }
+
+            // If multiple values can be submitted, add them up
+            if (is_array($value)) {
+                $scoreData[$fieldName] = array_sum($value);
+            } else {
+                $scoreData[$fieldName] = $value;
+            }
+        }
+
+        // Compute score
+        if (!empty($scoreData)) {
+            return array_sum($scoreData);
+        }
+
+        return false;
     }
 }

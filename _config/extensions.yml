@@ -1,0 +1,6 @@
+---
+Name: quizmasterextensions
+---
+PageController:
+  extensions:
+    quiz: DNADesign\QuizMaster\Extensions\PageControllerQuizExtension

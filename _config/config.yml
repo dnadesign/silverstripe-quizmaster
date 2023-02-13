@@ -1,0 +1,8 @@
+---
+Name: quizmaster
+---
+DNADesign\QuizMaster\Quiz:
+  allowed_step_classes:
+    multichoice: DNADesign\QuizMaster\Models\QuizMultiChoiceQuestionStep
+    content: DNADesign\QuizMaster\Models\QuizContentStep
+    result: DNADesign\QuizMaster\Models\QuizScoreResultStep
