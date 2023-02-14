@@ -1,6 +1,6 @@
 {
   "name": "dnadesign/silverstripe-quizmaster",
-  "description": "Provides model and interface to create quizzes",
+  "description": "Provides models and interfaces to create quizzes",
   "type": "silverstripe-vendormodule",
   "keywords": [
       "silverstripe",
@@ -8,10 +8,6 @@
   ],
   "license": "BSD-3-Clause",
   "authors": [{
-    "name": "Alexandre Saelens",
-    "email": "alexandre.saelens@dna.co.nz"
-  },
-  {
     "name": "DNA Design",
     "email": "dev@dna.co.nz"
   }],
@@ -21,6 +17,7 @@
       "symbiote/silverstripe-gridfieldextensions": "^3"
   },
   "extra": {
+    "installer-name": "silverstripe-quizmaster",
     "expose": [
         "client"
     ]

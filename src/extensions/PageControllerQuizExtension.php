@@ -6,10 +6,25 @@ use DNADesign\QuizMaster\Interfaces\QuizResultStep;
 use DNADesign\QuizMaster\Models\Quiz;
 use DNADesign\QuizMaster\Models\QuizStep;
 use SilverStripe\Core\Extension;
+use SilverStripe\View\Requirements;
 
 class PageControllerQuizExtension extends Extension
 {
     private static $allowed_actions = ['submitquiz'];
+
+    public function onBeforeInit()
+    {
+        $useModuleCSS = (boolean) Quiz::config()->get('use_module_css');
+        
+        if ($useModuleCSS === true) {
+            Requirements::css('dnadesign/silverstripe-quizmaster:client/css/quiz.css');
+        }
+
+        $useModuleJS = (boolean) Quiz::config()->get('use_module_js');
+        if ($useModuleJS === true) {
+            Requirements::css('dnadesign/silverstripe-quizmaster:client/javascript/quiz.js');
+        }
+    }
 
     public function submitquiz()
     {

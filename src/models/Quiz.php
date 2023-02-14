@@ -5,6 +5,7 @@ namespace DNADesign\QuizMaster\Models;
 use DNADesign\QuizMaster\Interfaces\QuizQuestion;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\ClassInfo;
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
@@ -15,11 +16,28 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class Quiz extends DataObject
 {
+    use Configurable;
+    
     private static $table_name = 'DNADesign_Quiz';
 
     private static $singular_name = 'Quiz';
 
     private static $plural_name = 'Quizzes';
+
+    /**
+     * @config
+     */
+    private static $use_module_css = true;
+
+    /**
+     * @config
+     */
+    private static $use_module_js = true;
+
+    /**
+     * @config
+     */
+    private static $allowed_step_classes = [];
 
     private static $db = [
         'Title' => 'Varchar(255)',
@@ -87,7 +105,7 @@ class Quiz extends DataObject
         }
 
         if (!empty($allowed)) {
-            foreach ($allowed as $key => $class) {
+            foreach ($allowed as $class) {
                 $classes[$class] = $class::singleton()->config()->get('singular_name');
             }
         }
