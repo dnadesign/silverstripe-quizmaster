@@ -3,6 +3,8 @@
 namespace DNADesign\QuizMaster\Models;
 
 use DNADesign\QuizMaster\Interfaces\QuizQuestion;
+use DNADesign\QuizMaster\Interfaces\QuizResultStep;
+use DNADesign\QuizMaster\Models\QuizContentStep;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Configurable;
@@ -140,6 +142,29 @@ class Quiz extends DataObject
     }
 
     /**
+     *
+     */
+    public function getStepType($id)
+    {
+        $step = $this->Steps()->byID($id);
+        $type = 'step';
+
+        if ($step) {
+            if (ClassInfo::classImplements($step->ClassName, QuizQuestion::class)) {
+                $type = 'question';
+            } elseif (ClassInfo::classImplements($step->ClassName, QuizResultStep::class)) {
+                $type = 'result';
+            } elseif ($step instanceof QuizContentStep) {
+                $type = 'content';
+            }
+        }
+
+        $this->extend('updateStepType', $type, $step, $id);
+
+        return $type;
+    }
+
+    /**
      * Generate the link to the submit action
      *
      * @return string
@@ -189,5 +214,11 @@ class Quiz extends DataObject
         }
 
         return false;
+    }
+
+    public function getZeroBaseStepCount()
+    {
+        $count = (int) $this->Steps()->count();
+        return $count > 0 ? $count - 1 : $count;
     }
 }

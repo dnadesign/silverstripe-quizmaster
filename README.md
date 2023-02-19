@@ -1,2 +1,2 @@
 # silverstripe-quizmaster
-An alternative to User Defined Form and silverstripe-self-assement
+An alternative to User Defined Form and silverstripe-self-assessment

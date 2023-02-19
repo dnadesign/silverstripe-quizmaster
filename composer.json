@@ -17,7 +17,6 @@
       "symbiote/silverstripe-gridfieldextensions": "^3"
   },
   "extra": {
-    "installer-name": "silverstripe-quizmaster",
     "expose": [
         "client"
     ]

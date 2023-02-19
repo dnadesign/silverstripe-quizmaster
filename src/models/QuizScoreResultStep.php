@@ -36,6 +36,11 @@ class QuizScoreResultStep extends QuizStep implements QuizResultStep
         return parent::getCMSFields();
     }
 
+    /**
+     * Renders the template with the populated feedback
+     *
+     * @return DBHTMLText
+     */
     public function getFeedback($data)
     {
         $quiz = $this->ParentQuiz();

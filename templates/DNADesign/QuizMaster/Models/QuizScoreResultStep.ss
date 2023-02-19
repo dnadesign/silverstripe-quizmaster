@@ -1,8 +1,8 @@
-<div data-result-step-id="$ID">
-    <input type="hidden" name="resultStepId" value="$ID" />
-    <button type="submit">Submit</button>
+<div class="quiz-step-result">
+    <% if $Feedbacks %>
+        <% loop $Feedbacks %>
+            $Feedback
+        <% end_loop %>
+        <button type="reset" data-reset><% _t('DNADesign\QuizMaster\Quiz.RESTART', 'RESTART the quiz') %></button>
+    <% end_if %>
 </div>
-
-<% loop $Feedbacks %>
-    $Feedback
-<% end_loop %>

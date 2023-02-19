@@ -1,4 +1,4 @@
-<div class="quiz-step quiz-step--start">
+<div class="quiz-step-start">
     <div class="quiz-step__body">
         <div class="quiz-step__content">$Content</div>
         <% if $Image %>

@@ -1,7 +1,13 @@
-<div class="quiz">
+<div class="quiz" data-quiz data-current-step="1">
+    <button type="button" data-back>Back</button>
+    <progress  max="$ZeroBaseStepCount" value="0" data-progress></progress>
     <form id="$FormTitle" class="quiz-form" action="$FormAction" autocompelete="false" method="post">
         <% loop $Steps %>
-            <div class="quiz-step" data-step="$Pos" data-question="$Up.getQuestionNumberForStep($ID)">
+        <div class="quiz-step<% if $First %> active<% end_if %>" 
+            aria-hidden="<% if $First %>false<% else %>true<% end_if %>" 
+            data-step="$Pos" 
+            data-step-type="$Up.getStepType($ID)"
+            data-step-id="$ID">
                 $Me
             </div>
         <% end_loop %>

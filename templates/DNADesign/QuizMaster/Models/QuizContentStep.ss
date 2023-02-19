@@ -1,4 +1,4 @@
-<div class="quiz-step quiz-step--content">
+<div class="quiz-step-content">
     <div class="quiz-step__body">
         $Content
     </div>
