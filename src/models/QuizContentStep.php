@@ -14,4 +14,12 @@ class QuizContentStep extends QuizStep
         'Content' => 'HTMLText',
         'ButtonCustomLabel' => 'Varchar(255)'
     ];
+
+    private static $has_one = [
+        'Image' => Image::class
+    ];
+
+    private static $owns = [
+        'Image'
+    ];
 }

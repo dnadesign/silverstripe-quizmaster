@@ -1,3 +1,13 @@
 .quiz-step {
-    width: 100%;
+    width:100%;
+    display: none;
+}
+
+.quiz-step.active {
+    display: block;
+}
+
+/* Hide back button on first step */
+[data-current-step="1"] > .quiz-progress {
+    display: none;
 }
