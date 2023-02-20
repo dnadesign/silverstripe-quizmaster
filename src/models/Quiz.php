@@ -169,7 +169,7 @@ class Quiz extends DataObject
      *
      * @return string
      */
-    public function getFormAction()
+    public function getFormActionURL()
     {
         return Controller::join_links(Controller::curr()->Link('submitquiz'), $this->ID);
     }

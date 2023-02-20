@@ -15,14 +15,15 @@ class PageControllerQuizExtension extends Extension
     public function onBeforeInit()
     {
         $useModuleCSS = (boolean) Quiz::config()->get('use_module_css');
-        
         if ($useModuleCSS === true) {
-            Requirements::css('dnadesign/silverstripe-quizmaster:client/css/quiz.css');
+            // Requirements::css('dnadesign/silverstripe-quizmaster:client/css/quiz.css');
+            Requirements::css('app/client/css/quiz.css');
         }
 
         $useModuleJS = (boolean) Quiz::config()->get('use_module_js');
         if ($useModuleJS === true) {
-            Requirements::css('dnadesign/silverstripe-quizmaster:client/javascript/quiz.js');
+            // Requirements::css('dnadesign/silverstripe-quizmaster:client/javascript/quiz.js');
+            Requirements::javascript('app/client/javascript/quiz.js');
         }
     }
 

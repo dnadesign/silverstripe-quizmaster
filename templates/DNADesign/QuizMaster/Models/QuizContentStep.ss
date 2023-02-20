@@ -2,7 +2,7 @@
     <div class="quiz-step__body">
         <div class="quiz-step__content">$Content</div>
         <% if $Image %>
-        <div class="quiz-step__Image">$Image</div>
+        <div class="quiz-step__image">$Image</div>
         <% end_if %>
     </div>
     <div class="quiz-step__actions">

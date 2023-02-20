@@ -3,7 +3,7 @@
         <button type="button" data-back>Back</button>
         <progress  max="$ZeroBaseStepCount" value="0" data-progress></progress>
     </div>
-    <form id="$FormTitle" class="quiz-form" action="$FormAction" autocompelete="false" method="post">
+    <form id="$FormTitle" class="quiz-form" action="$FormActionURL" autocompelete="false" method="post">
         <% loop $Steps %>
         <div class="quiz-step<% if $First %> active<% end_if %>" 
             aria-hidden="<% if $First %>false<% else %>true<% end_if %>" 
