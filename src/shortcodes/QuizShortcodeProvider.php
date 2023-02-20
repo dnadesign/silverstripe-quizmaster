@@ -28,6 +28,6 @@ class QuizShortcodeProvider implements ShortcodeHandler
             return $content;
         }
 
-        return $quiz->renderWith(Quiz::class);
+        return $quiz->forTemplate();
     }
 }

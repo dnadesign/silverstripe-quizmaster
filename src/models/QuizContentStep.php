@@ -2,6 +2,8 @@
 
 namespace DNADesign\QuizMaster\Models;
 
+use SilverStripe\Assets\Image;
+
 class QuizContentStep extends QuizStep
 {
     private static $table_name = 'DNADesign_QuizContentStep';
