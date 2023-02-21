@@ -1,0 +1,1 @@
+<progress  max="$ZeroBaseStepCount" value="0" data-progress></progress>

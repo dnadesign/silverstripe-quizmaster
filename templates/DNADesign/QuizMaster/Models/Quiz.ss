@@ -1,7 +1,7 @@
 <div class="quiz" data-quiz data-current-step="1">
     <div class="quiz-progress">
         <button type="button" data-back>Back</button>
-        <progress  max="$ZeroBaseStepCount" value="0" data-progress></progress>
+        <% include QuizProgressBar %>
     </div>
     <form id="$FormTitle" class="quiz-form" action="$FormActionURL" autocompelete="false" method="post">
         <% loop $Steps %>
