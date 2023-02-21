@@ -1,5 +1,5 @@
 <div class="quiz-step-question">
-    <fieldset>
+    <fieldset class="quiz-step__body">
         <legend class="quiz-step__legend" for="question-{$ID}">
             <div class="quiz-step__question-number">$ParentQuiz.getQuestionNumberForStep($ID)</div>
             <div class="quiz-step__question">$Question</div>
