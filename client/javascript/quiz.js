@@ -154,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const backButtons = document.querySelectorAll('[data-quiz] [data-back]');
     backButtons.forEach((back) => {
         back.addEventListener('click', () => {
-            console.log('yeah');
             goToNextStep(back.closest('[data-quiz]'), 'back');
         });
     });

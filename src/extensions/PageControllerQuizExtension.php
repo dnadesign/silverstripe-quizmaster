@@ -21,7 +21,7 @@ class PageControllerQuizExtension extends Extension
 
         $useModuleJS = (boolean) Quiz::config()->get('use_module_js');
         if ($useModuleJS === true) {
-            Requirements::css('dnadesign/silverstripe-quizmaster:client/javascript/quiz.js');
+            Requirements::javascript('dnadesign/silverstripe-quizmaster:client/javascript/quiz.js');
         }
     }
 
