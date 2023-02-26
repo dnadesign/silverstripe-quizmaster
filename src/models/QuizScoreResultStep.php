@@ -20,7 +20,7 @@ class QuizScoreResultStep extends QuizStep implements QuizResultStep
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function ($fields) {
-            if ($this->ISInDB()) {
+            if ($this->IsInDB()) {
                 $feedback = $fields->dataFieldByName('FeedbackForScores');
                 if ($feedback) {
                     $config = $feedback->getConfig();

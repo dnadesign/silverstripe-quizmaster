@@ -14,8 +14,7 @@ class QuizMultiChoiceOption extends DataObject
 
     private static $db = [
         'Label' => 'Varchar(255)',
-        'Value' => 'Varchar(255)',
-        'IsCorrectAnswer' => 'Boolean'
+        'Value' => 'Varchar(255)'
     ];
 
     private static $has_one = [
@@ -25,8 +24,7 @@ class QuizMultiChoiceOption extends DataObject
     private static $summary_fields = [
         'ID' => 'ID',
         'Label' => 'Label',
-        'Value' => 'value',
-        'IsCorrectAnswer.Nice' => 'Correct answer'
+        'Value' => 'value'
     ];
 
     public function getCMSFields()
