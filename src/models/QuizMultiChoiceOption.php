@@ -14,17 +14,13 @@ class QuizMultiChoiceOption extends DataObject
 
     private static $db = [
         'Label' => 'Varchar(255)',
-        'Value' => 'Varchar(255)'
-    ];
-
-    private static $has_one = [
-        'ParentQuestion' => QuizMultiChoiceQuestionStep::class
+        'Value' => 'Varchar(255)',
     ];
 
     private static $summary_fields = [
         'ID' => 'ID',
         'Label' => 'Label',
-        'Value' => 'value'
+        'Value' => 'Value'
     ];
 
     public function getCMSFields()
@@ -52,6 +48,6 @@ class QuizMultiChoiceOption extends DataObject
 
     public function getTitle()
     {
-        return $this->Label;
+        return sprintf('%s (%s)', $this->Label, $this->Value);
     }
 }

@@ -7,8 +7,8 @@ use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\OptionsetField;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class QuizMultiChoiceQuestionStep extends QuizStep implements QuizQuestion
 {
@@ -26,25 +26,35 @@ class QuizMultiChoiceQuestionStep extends QuizStep implements QuizQuestion
         'UseValueAsScore' => 'Boolean',
     ];
 
-    private static $has_many = [
+    private static $many_many = [
         'Options' => QuizMultiChoiceOption::class
+    ];
+
+    private static $many_many_extraFields = [
+        'Options' => [
+            'Sort' => 'Int'
+        ]
     ];
 
     public function getCMSFields()
     {
         $this->beforeUpdateCMSFields(function (FieldList $fields) {
+            // Field name
+            $fieldName = $fields->dataFieldByName('FieldName');
+            if ($fieldName) {
+                $fieldName->setReadonly(true);
+            }
             // Move options
             if ($this->IsInDB()) {
                 $options = $fields->dataFieldByName('Options');
                 if ($options) {
-                    // Remove tab
-                    $fields->removeByName('Options');
-                    // Alter config
+                    // Edit config
                     $config = $options->getConfig();
                     if ($config) {
-                        $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
+                        $config->addComponent(new GridFieldOrderableRows('Sort'));
                     }
-
+                    // Remove tab
+                    $fields->removeByName('Options');
                     $fields->addFieldTotab('Root.Main', $options);
                 }
             }
@@ -75,7 +85,7 @@ class QuizMultiChoiceQuestionStep extends QuizStep implements QuizQuestion
     public function getFormField()
     {
         $field = null;
-        $source = $this->Options()->map('Value', 'Title')->toArray();
+        $source = $this->Options()->sort('Sort ASC')->map('Value', 'Title')->toArray();
 
         if ($this->FieldType === 'OptionSet') {
             if ($this->CanSelectMultiple) {
