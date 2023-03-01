@@ -85,7 +85,7 @@ class QuizMultiChoiceQuestionStep extends QuizStep implements QuizQuestion
     public function getFormField()
     {
         $field = null;
-        $source = $this->Options()->sort('Sort ASC')->map('Value', 'Title')->toArray();
+        $source = $this->Options()->sort('Sort ASC')->map('Value', 'Label')->toArray();
 
         if ($this->FieldType === 'OptionSet') {
             if ($this->CanSelectMultiple) {
