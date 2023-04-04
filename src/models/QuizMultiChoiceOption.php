@@ -35,12 +35,8 @@ class QuizMultiChoiceOption extends DataObject
 
         // Value
         $value = $fields->dataFieldByName('Value');
-        $isScore = $this->ParentQuestion() ? (boolean) $this->ParentQuestion()->UseValueAsScore : false;
         if ($value) {
             $value->setDescription('What is recorded by the system.');
-            if ($isScore) {
-                $value->setInputType('number');
-            }
         }
 
         return $fields;
