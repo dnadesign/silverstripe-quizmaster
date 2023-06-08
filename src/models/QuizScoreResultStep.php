@@ -56,9 +56,9 @@ class QuizScoreResultStep extends QuizStep implements QuizResultStep
         $feedbacks = $this->FeedbackForScores()
             ->filter(['MinScore:LessThanOrEqual' => $score, 'MaxScore:GreaterThanOrEqual' => $score]);
 
-        $result = $this->customise(['Feedbacks' => $feedbacks])->forTemplate();
+        $result = $this->customise(['Feedbacks' => $feedbacks, 'Score' => $score])->forTemplate();
 
-        $this->extend('updateGetFeedback', $data, $result);
+        $this->extend('updateGetFeedback', $data, $result, $score);
 
         return $result;
     }
