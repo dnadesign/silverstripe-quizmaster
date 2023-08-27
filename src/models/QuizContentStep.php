@@ -2,10 +2,13 @@
 
 namespace DNADesign\QuizMaster\Models;
 
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\Assets\Image;
 
 class QuizContentStep extends QuizStep
 {
+    use QuizPermissionsTrait;
+
     private static $table_name = 'DNADesign_QuizContentStep';
 
     private static $singular_name = 'Content';

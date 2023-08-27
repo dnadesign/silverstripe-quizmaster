@@ -3,6 +3,7 @@
 namespace DNADesign\QuizMaster\Models;
 
 use DNADesign\QuizMaster\Interfaces\QuizQuestion;
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\DropdownField;
@@ -12,6 +13,8 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class QuizMultiChoiceQuestionStep extends QuizStep implements QuizQuestion
 {
+    use QuizPermissionsTrait;
+
     private static $table_name = 'DNADesign_QuizQuestionStep';
 
     private static $singular_name = 'Multi-choice question';

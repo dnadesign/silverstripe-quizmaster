@@ -2,10 +2,13 @@
 
 namespace DNADesign\QuizMaster\Models;
 
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\ORM\DataObject;
 
 class QuizFeedbackForScore extends DataObject
 {
+    use QuizPermissionsTrait;
+
     private static $table_name = 'DNADesign_QuizFeedbackForScore';
 
     private static $singular_name = 'Feedback';

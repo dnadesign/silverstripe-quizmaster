@@ -3,10 +3,13 @@
 namespace DNADesign\QuizMaster\Models;
 
 use DNADesign\QuizMaster\Interfaces\QuizResultStep;
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 
 class QuizScoreResultStep extends QuizStep implements QuizResultStep
 {
+    use QuizPermissionsTrait;
+    
     private static $table_name = 'DNADesign_QuizScoreResultStep';
 
     private static $singular_name = 'Score Result';

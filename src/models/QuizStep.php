@@ -2,6 +2,7 @@
 
 namespace DNADesign\QuizMaster\Models;
 
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
@@ -9,6 +10,8 @@ use SilverStripe\ORM\FieldType\DBText;
 
 class QuizStep extends DataObject
 {
+    use QuizPermissionsTrait;
+
     private static $table_name = 'DNADesign_QuizStep';
 
     private static $singular_name = 'Quiz step';

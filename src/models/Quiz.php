@@ -5,6 +5,7 @@ namespace DNADesign\QuizMaster\Models;
 use DNADesign\QuizMaster\Interfaces\QuizQuestion;
 use DNADesign\QuizMaster\Interfaces\QuizResultStep;
 use DNADesign\QuizMaster\Models\QuizContentStep;
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\Control\Controller;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Configurable;
@@ -19,6 +20,7 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 class Quiz extends DataObject
 {
     use Configurable;
+    use QuizPermissionsTrait;
     
     private static $table_name = 'DNADesign_Quiz';
 

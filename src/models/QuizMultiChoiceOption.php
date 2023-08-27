@@ -2,10 +2,13 @@
 
 namespace DNADesign\QuizMaster\Models;
 
+use DNADesign\QuizMaster\Traits\QuizPermissionsTrait;
 use SilverStripe\ORM\DataObject;
 
 class QuizMultiChoiceOption extends DataObject
 {
+    use QuizPermissionsTrait;
+
     private static $table_name = 'DNADesign_QuizMultiChoiceOption';
 
     private static $singular_name = 'Option';
