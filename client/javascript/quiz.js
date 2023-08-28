@@ -15,7 +15,10 @@ const goToNextStep = (stepOrQuiz, direction) => {
         const isResultStep = nextStep.dataset.stepType === 'result'; 
         if (isResultStep === true) {
             nextStep.classList.add('loading');
-            fetchResultForStep(nextStep, quiz);
+            // for some reason firefox requires a timeout to allow FormData to be correct 
+            setTimeout(() => {
+              fetchResultForStep(nextStep, quiz);
+            });
         }
     }
 }

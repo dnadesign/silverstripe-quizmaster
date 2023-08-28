@@ -51,7 +51,7 @@ class QuizScoreResultStep extends QuizStep implements QuizResultStep
             user_error('Trying to get feedback from a step that doesn\'t belong to a quiz');
         }
 
-        $score = (int) $quiz->computeScore($data);
+        $score = intval(round($quiz->computeScore($data)));
         if ($score === false) {
             return _t(Quiz::class.'.SOMETHINGWRONG', 'Sorry something went wrong, please try again.');
         }
