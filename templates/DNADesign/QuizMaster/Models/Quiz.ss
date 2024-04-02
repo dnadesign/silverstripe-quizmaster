@@ -5,8 +5,8 @@
     </div>
     <form id="$FormTitle" class="quiz-form" action="$FormActionURL" autocompelete="false" method="post">
         <% loop $Steps %>
-        <div class="quiz-step<% if $First %> active<% end_if %>" 
-            aria-hidden="<% if $First %>false<% else %>true<% end_if %>" 
+        <div class="quiz-step<% if $IsFirst %> active<% end_if %>" 
+            aria-hidden="<% if $IsFirst %>false<% else %>true<% end_if %>" 
             data-step="$Pos" 
             data-step-type="$Up.getStepType($ID)"
             data-step-id="$ID">
