@@ -6,7 +6,7 @@
         <% end_loop %>
         </div>
         <div class="quiz-step__actions">
-            <button type="reset" data-reset><% _t('DNADesign\QuizMaster\Quiz.RESTART', 'Restart the quiz') %></button>
+            <button type="reset" data-reset><%t DNADesign\\QuizMaster\\Quiz.RESTART "Restart the quiz" %></button>
         </div>
     <% end_if %>
 </div>
