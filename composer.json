@@ -3,22 +3,23 @@
   "description": "Provides models and interfaces to create quizzes",
   "type": "silverstripe-vendormodule",
   "keywords": [
-      "silverstripe",
-      "quiz"
+    "silverstripe",
+    "quiz"
   ],
   "license": "BSD-3-Clause",
-  "authors": [{
-    "name": "DNA Design",
-    "email": "dev@dna.co.nz"
-  }],
+  "authors": [
+    {
+      "name": "DNA Design",
+      "email": "dev@dna.co.nz"
+    }
+  ],
   "require": {
-      "silverstripe/vendor-plugin": "^2.0",
-      "silverstripe/framework": "^5.0",
-      "symbiote/silverstripe-gridfieldextensions": "^4.0"
+    "silverstripe/framework": "^6.0",
+    "symbiote/silverstripe-gridfieldextensions": "^5.0"
   },
   "extra": {
     "expose": [
-        "client"
+      "client"
     ]
   }
 }

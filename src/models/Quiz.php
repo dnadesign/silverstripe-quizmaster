@@ -224,7 +224,7 @@ class Quiz extends DataObject
         return $count > 0 ? $count - 1 : $count;
     }
 
-    public function forTemplate()
+    public function forTemplate(): string
     {
         return $this->renderWith(static::class);
     }

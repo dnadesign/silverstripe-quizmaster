@@ -61,7 +61,7 @@ class QuizStep extends DataObject
         return DBField::create_field(DBText::class, $this->i18n_singular_name());
     }
 
-    public function forTemplate()
+    public function forTemplate(): string
     {
         return $this->renderWith(static::class);
     }

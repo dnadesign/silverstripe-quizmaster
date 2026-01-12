@@ -9,6 +9,6 @@
         </div>
     </fieldset>
     <div class="quiz-step__actions">
-        <button type="button" data-next><% _t("DNADesign\\QuizMaster\\Models\\Quiz.CONTINUE", 'Continue') %></button>
+        <button type="button" data-next><%t DNADesign\\QuizMaster\\Models\\Quiz.CONTINUE "Continue" %></button>
     </div>
 </div>

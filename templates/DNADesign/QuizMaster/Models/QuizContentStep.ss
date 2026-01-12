@@ -7,7 +7,7 @@
             <div class="quiz-step__content">$Content</div>
         </div>
         <div class="quiz-step__actions">
-            <button type="button" data-next><% if $ButtonCustomLabel %>$ButtonCustomLabel<% else %><% _t("DNADesign\\QuizMaster\\Models\\Quiz.CONTINUE", 'Continue') %><% end_if %></button>
+            <button type="button" data-next><% if $ButtonCustomLabel %>$ButtonCustomLabel<% else %><%t DNADesign\\QuizMaster\\Models\\Quiz.CONTINUE "Continue" %><% end_if %></button>
         </div>
     </div>
 </div>
